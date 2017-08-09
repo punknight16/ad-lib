@@ -1,0 +1,25 @@
+lets make a quick app.
+
+for config it needs:
+	1) a git repository
+	2) a heroku server
+	3) a spec
+
+for features it needs:
+	0) templates in data.js
+	1) accept form input
+	2) place the input into a random template
+	-----stretch goals-----
+	3) parse data from an uploaded file
+	4) input the parsed data into a random template
+
+
+
+for views it needs:
+
+	A) input page
+			-->text input field and form
+			-->submit button
+
+	B) display page
+			-->display the ad-libbed paragraph in the center of the page
