@@ -1,9 +1,9 @@
 lets make a quick app.
 
 for config it needs:
-	1) a git repository
-	2) a heroku server
-	3) a spec
+	1) a git repository -done
+	2) a heroku server -done
+	3) a spec - done
 
 for features it needs:
 	0) templates in data.js
@@ -13,13 +13,27 @@ for features it needs:
 	3) parse data from an uploaded file
 	4) input the parsed data into a random template
 
-
-
-for views it needs:
-
-	A) input page
-			-->text input field and form
-			-->submit button
-
-	B) display page
-			-->display the ad-libbed paragraph in the center of the page
+files
+	routes.js
+		get.ViewOne
+		get.ViewAll
+		post.CreateOne
+		post.EditOne
+		post.DestroyOne
+	data.js
+		templates
+		log
+	interactors
+		createAdLib.js
+	view-controllers
+		entries.jsx
+		entry.jsx
+	view-models
+		entries-display.jsx
+		entry-display.jsx
+		entry-intake.jsx
+		entry-editor.jsx
+	view-xhandlers
+		getEntriesFromServer
+		getEntryFromServer
+		postEntryToServer
