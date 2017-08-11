@@ -1,68 +1,48 @@
-var http = require('http');
-var parse = require('url').parse;
-var entries = [];
+var express = require('express');
+var bodyParser = require('body-parser');
+var routes = require('./routes');
+var app = express();
 
-var server = http.createServer(function(req, res){
-	switch(req.method){
-    case 'POST':
-      if('/createOne'==parse(req.url).pathname){
-        var item = '';
-        req.setEncoding('utf8');
-        req.on('data', function(chunk){
-          item+=chunk;
-        });
-        req.on('end', function(){
-          entries.push(item);
-          show(req, res);  
-        })
-      } else {
-        error(req, res);
-      }
-      break;
-    case 'GET':
-      show(req, res);
-      break;
-    default:
-      error(req, res);
-  }
-}).listen(process.env.PORT || 3000);
+app
+  .use(bodyParser.json())
+  .get('/', routes.entry)
+  .get('/viewOne/:id', routes.viewOne)
+  .get('/viewAll', routes.viewAll)
+  .post('/createOne', routes.createOne)
+  .post('/editOne/:id', routes.editOne)
+  .get('/destroyOne/:id', routes.destroyOne)
+  .use(error)
+  .listen(3000)
+
 
 function error(req, res){
+  //console.log(req);
   res.end('error');
-}
-function show(req, res){
-  res.end(JSON.stringify(entries));
 }
 
 //Tests
 if (require.main.filename == '/usr/local/lib/node_modules/mocha/bin/_mocha') {
   var assert = require('assert');
   describe('server', function(){
-  	it('should return entries_arr with entry1', function(done){
+  	it('should return all of the .use functions, in this case error', function(done){
   		var req = { 
         method: 'POST',
-        url: '/createOne',
-        setEncoding: function(){},
-        on: function(event, cb){
-          if(event=='data'){
-            return cb('entry1');  // this is the post data
-          } else {
-            return cb();
-          }
-        }
+        url: '/'
       };
   		var res = { 
-    		end: function(entries){ 
-          //console.log(entries);
-          console.log(entries)
-    			assert(entries=='["entry1"]');
+    		end: function(string){
+
+          //console.log('string', string);
+          assert(true);
     			done();
-    		}
+    		},
+        setHeader: function(){
+
+        }
     	};
-  		//console.log(server._events.request.toString());
-  		server._events.request(req, res);
-  		assert(false);
-  		done()
+  		//test starts here
+      
+      app(req, res);
   	});
   });
 }

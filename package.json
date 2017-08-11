@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/punknight16/ad-lib/issues"
   },
-  "homepage": "https://github.com/punknight16/ad-lib#readme"
+  "homepage": "https://github.com/punknight16/ad-lib#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4"
+  }
 }
