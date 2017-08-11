@@ -12,7 +12,7 @@ app
   .post('/editOne/:id', routes.editOne)
   .get('/destroyOne/:id', routes.destroyOne)
   .use(error)
-  .listen(3000)
+  .listen(process.env.PORT || 3000)
 
 
 function error(req, res){
