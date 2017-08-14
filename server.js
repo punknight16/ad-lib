@@ -1,16 +1,18 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var serveStatic = require('serve-static');
 var routes = require('./routes');
 var app = express();
 
 app
   .use(bodyParser.json())
-  .get('/', routes.entry)
+  //.get('/', routes.entry)
   .get('/viewOne/:id', routes.viewOne)
   .get('/viewAll', routes.viewAll)
   .post('/createOne', routes.createOne)
   .post('/editOne/:id', routes.editOne)
   .get('/destroyOne/:id', routes.destroyOne)
+  .use(serveStatic(__dirname + '/public'))
   .use(error)
   .listen(process.env.PORT || 3000)
 

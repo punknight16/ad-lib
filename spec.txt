@@ -14,16 +14,16 @@ for features it needs:
 	4) input the parsed data into a random template
 
 files
-	routes.js
+	routes.js - done
 		get.ViewOne
 		get.ViewAll
 		post.CreateOne
 		post.EditOne
 		post.DestroyOne
-	data.js
+	data.js - done
 		templates
 		log
-	interactors
+	interactors - done
 		createAdLib.js
 	view-controllers
 		entries.jsx
