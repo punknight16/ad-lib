@@ -1,0 +1,32 @@
+files
+	routes
+		adlib.js
+			get.ViewOne
+			get.ViewAll
+			post.CreateOne
+			post.EditOne
+			post.DestroyOne
+		template.js
+			get.ViewOne
+			get.ViewAll
+			post.CreateOne
+			post.EditOne
+			post.DestroyOne
+	data
+		templates_arr.js
+		adlibs_arr.js
+	interactors - done
+		create-adlib.js
+	view-controllers
+		adlib.html
+		adlibs.html
+		entry.html
+	view-models
+		adlib-intake.jsx
+	view-xhandlers
+		text-entry.js
+		drag-decorator.js
+		submit-adlib.js
+		clear-adlib.js
+		
+		

@@ -4,9 +4,88 @@
     <script src="./build/react.min.js"></script>
     <script src="./build/react-dom.min.js"></script>
     <script src="./build/browser.min.js"></script>
+    <style>
+      #adlib-intake-panel {
+        background-color: linen;
+        border-radius: 5px;
+        border: solid 1px #949494;
+        height: 250px;
+        width: 300px;
+        z-index: 2;
+        box-shadow: 0px 4px 3px grey;
+      }
+      #adlib-editor-panel {
+        margin: 10px 10px;
+        background-color: white;
+        border-radius: 5px;
+        border: solid 1px #949494;
+        height: 200px;
+        width: 280px;
+      }
+      #adlib-textinput {
+        margin: 5px 10px;
+        color: #343434;
+        font-size: 18px; 
+        font-family: 'courier';
+        line-height: 30px;
+      }
+      #adlib-buttons-panel {
+        margin: 0px 10px;
+        height: 20px;
+        width: 280px;
+      }
+      .submit-button {
+        padding: 5px 4px; 
+        background: #63CA43;
+        cursor: pointer;
+        border-radius: 5px;
+        color: linen;
+        font-size: 12px;
+        font-family: 'helvetica';
+        z-index: 2;
+        box-shadow: 0px 2px 1px grey
+      }
+      .clear-button {
+        margin-left: 5px;
+        padding: 5px 8px; 
+        background: #D44949;
+        cursor: pointer;
+        border-radius: 5px;
+        color: linen;
+        font-size: 12px;
+        font-family: 'helvetica';
+        z-index: 2;
+        box-shadow: 0px 2px 1px grey
+      }
+      .text-decorator {
+        border-top: solid 1px #949494;
+        color: #D44949;
+        font-size: 12px;
+        margin-left: 10px;
+      }
+    </style>
   </head>
   <body>
-    <div id="example"></div>
+    <div id='main' style='height: 100vh; display: flex; align-items: center; justify-content: center'>
+      <div id='adlib-intake-panel' style='display: flex; flex-direction: column'>
+        <div id='adlib-editor-panel' style='display: flex; flex-direction: column; justify-content: space-between'>
+          <div id='adlib-textinput'>John watched as the quick, brown fox jumped over the lazy dog</div>
+          <div style='display: flex;'>
+            <div id="drag1" class='text-decorator' draggable="true">Person</div>
+            <div id="drag2" class='text-decorator' draggable="true">noun1</div>
+            <div id="drag3" class='text-decorator' draggable="true">noun2</div>
+            <div id="drag4" class='text-decorator' draggable="true">adject.</div>
+          </div>
+        </div>
+        <div id='adlib-buttons-panel' style='display: flex; align-items: flex-end; justify-content: flex-end'>
+          <div class='submit-button'>Submit</div>
+          <div class='clear-button'>Clear</div>
+        </div>
+      </div>
+      <div id="example"></div>
+    </div>
+
+    
     <script type="text/babel">
       ReactDOM.render(
         <h1>Entry Page</h1>,
