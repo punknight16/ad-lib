@@ -29,6 +29,14 @@
         font-family: 'courier';
         line-height: 30px;
       }
+      #ghost-textinput {
+        width: 280px;
+        margin: 5px 10px;
+        color: #F5F5F5;
+        font-size: 18px; 
+        font-family: 'courier';
+        line-height: 30px;
+      }
       #adlib-buttons-panel {
         margin: 0px 10px;
         height: 20px;
@@ -69,7 +77,11 @@
     <div id='main' style='height: 100vh; display: flex; align-items: center; justify-content: center'>
       <div id='adlib-intake-panel' style='display: flex; flex-direction: column'>
         <div id='adlib-editor-panel' style='display: flex; flex-direction: column; justify-content: space-between'>
-          <div id='adlib-textinput'>John watched as the quick, brown fox jumped over the lazy dog</div>
+          <div id='adlib-textinput' style='z-index: 2'>Test</div>
+          <div id='ghost-textinput' style='position: absolute' >
+            <div style='position: relative; margin-top: 15px;'>
+              <span>John </span>watched as the quick, brown fox jumped over the lazy dog</div>
+          </div>
           <div style='display: flex;'>
             <div id="drag1" class='text-decorator' draggable="true">Person</div>
             <div id="drag2" class='text-decorator' draggable="true">noun1</div>
@@ -82,15 +94,9 @@
           <div class='clear-button'>Clear</div>
         </div>
       </div>
-      <div id="example"></div>
     </div>
 
     
-    <script type="text/babel">
-      ReactDOM.render(
-        <h1>Entry Page</h1>,
-        document.getElementById('example')
-      );
-    </script>
+    <script src="./jsx/adlib-intake.jsx" type="text/babel"></script>
   </body>
 </html>
