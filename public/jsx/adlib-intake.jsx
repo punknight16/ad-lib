@@ -44,15 +44,25 @@ var AdlibTextinput = React.createClass({
 });
 
 var AdlibIntakeController = React.createClass({
+	getInitialState: function(){
+		return {is_infocus: false};
+	},
+	handleFocus: function(){
+		this.setState({is_infocus: true});
+	},
+	handleBlur: function(){
+		this.setState({is_infocus: false});
+	},
 	render: function (){
 		var styles = {
 			controller: {'color': 'red', 'position': 'relative'},
-			textinputContainer: {'color': 'green', 'position': 'relative', 'width': '260px'},
-			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px'},
+			textinputContainer: {'color': 'green', 'position': 'relative', 'width': '260px', 'zIndex': '0'},
+			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px', 'zIndex': '0'},
 			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
+		(this.state.is_infocus) ? styles.textinputContainer['zIndex'] =2 : styles.ghostinputContainer['zindex'] = 2;
 		return (
-			<div style={styles.controller}>
+			<div style={styles.controller} onFocus={this.handleFocus} onBlur={this.handleBlur}>
 				<div id='adlib-ghostinput' style={styles.ghostinputContainer}>
 					<AdlibGhostinput ref={(ref) => this.adlib_ghostinput = ref} style={styles.ghostinputItem}>
 						John watched as the quick, brown fox jumped over the lazy dog
@@ -77,15 +87,19 @@ function handleBlur(action, state, react, ext){
 
 	var html_tags_removed = textinput.replace(/<\/?\w+>/gi, '');
 	adlib_textinput.setState({textinput: html_tags_removed});
-	adlib_ghostinput.setState({ghostinput: html_tags_removed});
-}
+	
 
+	var html_with_spantags= html_tags_removed.replace(/(\w+)(\s|.)/g, '<span ondrop="drop(event)" ondragover="allowDrop(event)">$&</span>');
+	console.log(html_with_spantags);
+	adlib_ghostinput.setState({ghostinput: html_with_spantags});
+}
+/*
 //Tests
-/*if (require.main.filename == '/usr/local/lib/node_modules/mocha/bin/_mocha') {
+if (require.main.filename == '/usr/local/lib/node_modules/mocha/bin/_mocha') {
   var assert = require('assert');
   describe('handleBlur', function(){
   	var action = {
-  		textinput: 'test'
+  		textinput: 'test again'
   	};
   	var state = {
   		adlib_textinput: {textinput: ''},
@@ -110,14 +124,15 @@ function handleBlur(action, state, react, ext){
   	var ext = {};
   	it('should update two components', function(done){
   		handleBlur(action, state, react, ext);
-  		assert(state.adlib_textinput.textinput=='test');
-  		assert(state.adlib_ghostinput.ghostinput=='test');
+  		assert(state.adlib_textinput.textinput=='test again');
+  		assert(state.adlib_ghostinput.ghostinput=='test again');
   		done();
   	});
   });
 }
 */
 //view-handlers
-//1 when the adlib_intake_controller is in-focus, the adlib_textinput moves to the front
-//2 when the adlib_intake_controller is blurred, the adlib_ghostinput moves to the front
-//3 when the adlib_textinput is blurred, the adlib_ghostinput and the adlib_textinput updates
+//1 when the adlib_intake_controller is in-focus, the adlib_textinput moves to the front - done
+//2 when the adlib_intake_controller is blurred, the adlib_ghostinput moves to the front - done
+//3 when the adlib_textinput is blurred, the adlib_ghostinput and the adlib_textinput updates - done!
+//4 get the span tag for each word
