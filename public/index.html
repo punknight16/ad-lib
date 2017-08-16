@@ -78,8 +78,7 @@
           ev.preventDefault();
       }
       function drag(ev) {
-        console.log(ev.target.innerHTML);
-          ev.dataTransfer.setData("text", ev.target.innerHTML);
+          ev.dataTransfer.setData("text", ev.target.id);
       } 
       function drop(ev) {
           ev.preventDefault();
@@ -92,7 +91,7 @@
     <div id='main' style='height: 100vh; display: flex; align-items: center; justify-content: center'>
       <div id='adlib-intake-panel' style='display: flex; flex-direction: column'>
         <div id='adlib-editor-panel' style='display: flex; flex-direction: column; justify-content: space-between'>
-          <div ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:red;">Test</div>
+          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:red;">Test</div>
           <div id='adlib-intake'>Default Text</div>
           
           <div style='display: flex;'>
