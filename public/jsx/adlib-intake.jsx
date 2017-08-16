@@ -9,7 +9,7 @@ var AdlibGhostinput = React.createClass({
 	},
 	render: function (){
 		var styles = {
-			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px'}
+			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
 		return (
 			<div  
@@ -45,9 +45,9 @@ var AdlibIntakeController = React.createClass({
 	render: function (){
 		var styles = {
 			controller: {'color': 'red', 'position': 'relative'},
-			textinputContainer: {'color': 'green', 'position': 'relative'},
-			ghostinputContainer: {'color': 'blue', 'position': 'absolute'},
-			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px'}
+			textinputContainer: {'color': 'green', 'position': 'relative', 'width': '260px'},
+			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px'},
+			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
 		return (
 			<div style={styles.controller}>
