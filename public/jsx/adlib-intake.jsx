@@ -4,9 +4,6 @@ var AdlibGhostinput = React.createClass({
 			ghostinput: 'John watched as the quick, brown fox jumped over the lazy dog'
 		}
 	},
-	setGhostState: function(new_text){
-		this.setState({ghostinput: new_text})
-	},
 	render: function (){
 		var styles = {
 			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
@@ -27,9 +24,14 @@ var AdlibTextinput = React.createClass({
 		}
 	},
 	handleBlur: function(e){
-		var html_tags_removed = this.adlib_textinput.innerHTML.replace(/<\/?\w+>/gi, '');
-		this.setState({textinput: html_tags_removed});
-		this.props.parent.adlib_ghostinput.setGhostState(html_tags_removed);
+		var action = {textinput: this.adlib_textinput.innerHTML};
+		var state = {};
+		var react = {
+			adlib_textinput: {setState: this.setState.bind(this)},
+			adlib_ghostinput: {setState: this.setState.bind(this.props.parent.adlib_ghostinput)}
+		};
+		var ext = {};
+		handleBlur(action, state, react, ext);
 	},
 	render: function (){
 		return (
@@ -68,6 +70,53 @@ var AdlibIntakeController = React.createClass({
 
 ReactDOM.render(<AdlibIntakeController />, document.getElementById('adlib-intake'));
 
+function handleBlur(action, state, react, ext){
+	var textinput = action.textinput;
+	var adlib_textinput = react.adlib_textinput;
+	var adlib_ghostinput = react.adlib_ghostinput;
+
+	var html_tags_removed = textinput.replace(/<\/?\w+>/gi, '');
+	adlib_textinput.setState({textinput: html_tags_removed});
+	adlib_ghostinput.setState({ghostinput: html_tags_removed});
+}
+
+//Tests
+/*if (require.main.filename == '/usr/local/lib/node_modules/mocha/bin/_mocha') {
+  var assert = require('assert');
+  describe('handleBlur', function(){
+  	var action = {
+  		textinput: 'test'
+  	};
+  	var state = {
+  		adlib_textinput: {textinput: ''},
+  		adlib_ghostinput: {ghostinput: ''}
+  	};
+  	var react = {
+  		adlib_textinput: {
+  			setState: function(obj){
+      		for (var key in obj){
+        		this[key] = obj[key];
+      		}
+    		}.bind(state.adlib_textinput)
+    	},
+    	adlib_ghostinput: {
+    		setState: function(obj){
+      		for (var key in obj){
+        		this[key] = obj[key];
+      		}
+    		}.bind(state.adlib_ghostinput)
+    	}
+  	}
+  	var ext = {};
+  	it('should update two components', function(done){
+  		handleBlur(action, state, react, ext);
+  		assert(state.adlib_textinput.textinput=='test');
+  		assert(state.adlib_ghostinput.ghostinput=='test');
+  		done();
+  	});
+  });
+}
+*/
 //view-handlers
 //1 when the adlib_intake_controller is in-focus, the adlib_textinput moves to the front
 //2 when the adlib_intake_controller is blurred, the adlib_ghostinput moves to the front
