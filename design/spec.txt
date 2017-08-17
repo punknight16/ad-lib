@@ -25,7 +25,7 @@ files
 		adlib-intake.jsx
 	view-xhandlers
 		text-entry.js --mirrors text to a overlapping section called ghosttext with span tags for dropping-done!
-		drag-decorator.js -- adds a position absolute over top of the ghosttext
+		drag-decorator.js -- adds a position absolute over top of the ghosttext -- done!
 		submit-adlib.js
 		clear-adlib.js
 		

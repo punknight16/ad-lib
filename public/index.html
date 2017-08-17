@@ -67,6 +67,10 @@
         z-index: 2;
         box-shadow: 0px 2px 1px grey
       }
+      .text-initial-decorator {
+        color: #D44949;
+        font-size: 12px;
+      }
       .text-decorator {
         border-top: solid 1px #949494;
         color: #D44949;
@@ -86,6 +90,7 @@
           ev.preventDefault();
           var data = ev.dataTransfer.getData("text");
           ev.target.prepend(document.getElementById(data));
+          document.getElementById(data).className = 'text-decorator';
       }
     </script>
   </head>
@@ -96,10 +101,10 @@
           <div id='adlib-intake'>Default Text</div>
           
           <div style='display: flex; flex-direction:row; justify-content: space-evenly;'>
-            <p><span id="drag1" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> Person</span></span></p>
-            <p><span id="drag2" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun1</span></span></p>
-            <p><span id="drag3" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun2</span></span></p>
-            <p><span id="drag4" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> adject</span></span></p>
+            <p><span id="drag1" class='text-initial-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> Person</span></span></p>
+            <p><span id="drag2" class='text-initial-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun1</span></span></p>
+            <p><span id="drag3" class='text-initial-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun2</span></span></p>
+            <p><span id="drag4" class='text-initial-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> adject</span></span></p>
           </div>
         </div>
         <div id='adlib-buttons-panel' style='display: flex; align-items: flex-end; justify-content: flex-end'>
