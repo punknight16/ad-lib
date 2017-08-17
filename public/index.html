@@ -40,7 +40,7 @@
       }
       #adlib-buttons-panel {
         margin: 0px 10px;
-        height: 20px;
+        
         width: 280px;
       }
       .submit-button {
@@ -70,7 +70,9 @@
         border-top: solid 1px #949494;
         color: #D44949;
         font-size: 12px;
-        margin-left: 10px;
+        position: absolute;
+        height: 16px;
+        margin-top: 10px;
       }
     </style>
     <script>
@@ -83,7 +85,7 @@
       function drop(ev) {
           ev.preventDefault();
           var data = ev.dataTransfer.getData("text");
-          ev.target.appendChild(document.getElementById(data));
+          ev.target.prepend(document.getElementById(data));
       }
     </script>
   </head>
@@ -95,10 +97,10 @@
           <div id='adlib-intake'>Default Text</div>
           
           <div style='display: flex;'>
-            <div id="drag1" class='text-decorator' draggable="true" ondragstart="drag(event)">Person</div>
-            <div id="drag2" class='text-decorator' draggable="true" ondragstart="drag(event)">noun1</div>
-            <div id="drag3" class='text-decorator' draggable="true" ondragstart="drag(event)">noun2</div>
-            <div id="drag4" class='text-decorator' draggable="true" ondragstart="drag(event)">adject.</div>
+            <span id="drag1" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> Person</span>
+            <span id="drag2" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> noun1</span>
+            <span id="drag3" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> noun2</span>
+            <span id="drag4" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> adject</span>
           </div>
         </div>
         <div id='adlib-buttons-panel' style='display: flex; align-items: flex-end; justify-content: flex-end'>

@@ -1,12 +1,12 @@
 var AdlibGhostinput = React.createClass({
 	getInitialState: function(){
 		return {
-			ghostinput: 'John watched as the quick, brown fox jumped over the lazy dog'
+			ghostinput: '<span ondrop="drop(event)" ondragover="allowDrop(event)">John </span> watched as the quick, brown fox jumped over the lazy dog'
 		}
 	},
 	render: function (){
 		var styles = {
-			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
+			ghostinputItem: {'color': 'white', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
 		return (
 			<div  
@@ -57,15 +57,15 @@ var AdlibIntakeController = React.createClass({
 		var styles = {
 			controller: {'color': 'red', 'position': 'relative'},
 			textinputContainer: {'color': 'green', 'position': 'relative', 'width': '260px', 'zIndex': '0'},
-			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px', 'zIndex': '0'},
-			ghostinputItem: {'color': 'purple', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
+			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px', 'zIndex': '2'},
+			ghostinputItem: {'color': 'white', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
-		(this.state.is_infocus) ? styles.textinputContainer['zIndex'] =2 : styles.ghostinputContainer['zindex'] = 2;
+		//(this.state.is_infocus) ? styles.textinputContainer['zIndex'] =2 : styles.ghostinputContainer['zindex'] = 2;
 		return (
 			<div style={styles.controller} onFocus={this.handleFocus} onBlur={this.handleBlur}>
 				<div id='adlib-ghostinput' style={styles.ghostinputContainer}>
 					<AdlibGhostinput ref={(ref) => this.adlib_ghostinput = ref} style={styles.ghostinputItem}>
-						John watched as the quick, brown fox jumped over the lazy dog
+						<span ondrop="drop(event)" ondragover="allowDrop(event)">John </span>watched as the quick, brown fox jumped over the lazy dog
 					</AdlibGhostinput>
 				</div>
 				<div id='adlib-textinput' style={styles.textinputContainer}>
