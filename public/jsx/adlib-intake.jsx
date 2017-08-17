@@ -60,9 +60,11 @@ var AdlibIntakeController = React.createClass({
 		return {is_infocus: false};
 	},
 	handleFocus: function(){
+		console.log('fired focus');
 		this.setState({is_infocus: true});
 	},
 	handleBlur: function(){
+		console.log('fired blur');
 		this.setState({is_infocus: false});
 	},
 	render: function (){
@@ -72,9 +74,10 @@ var AdlibIntakeController = React.createClass({
 			ghostinputContainer: {'color': 'blue', 'position': 'absolute', 'width': '260px', 'zIndex': '2'},
 			ghostinputItem: {'color': 'white', 'position': 'relative', 'marginTop': '15px', 'width': '260px'}
 		};
-		//(this.state.is_infocus) ? styles.textinputContainer['zIndex'] =2 : styles.ghostinputContainer['zindex'] = 2;
+		(this.state.is_infocus) ? styles.textinputContainer['zIndex'] =2 : styles.textinputContainer['zIndex'] = 0;
+		(this.state.is_infocus) ? styles.ghostinputContainer['zIndex'] =0 : styles.ghostinputContainer['zIndex'] = 2;
 		return (
-			<div style={styles.controller} onFocus={this.handleFocus} onBlur={this.handleBlur}>
+			<div style={styles.controller} onClick={this.handleFocus} onBlur={this.handleBlur}>
 				<div id='adlib-ghostinput' style={styles.ghostinputContainer}>
 					<AdlibGhostinput ref={(ref) => this.adlib_ghostinput = ref} style={styles.ghostinputItem}>
 						<span ondrop="drop(event)" ondragover="allowDrop(event)">John </span>watched as the quick, brown fox jumped over the lazy dog
