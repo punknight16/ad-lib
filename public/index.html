@@ -37,6 +37,7 @@
         font-size: 18px; 
         font-family: 'courier';
         line-height: 30px;
+        vertical-align: top;
       }
       #adlib-buttons-panel {
         margin: 0px 10px;
@@ -71,7 +72,6 @@
         color: #D44949;
         font-size: 12px;
         position: absolute;
-        height: 16px;
         margin-top: 10px;
       }
     </style>
@@ -93,14 +93,13 @@
     <div id='main' style='height: 100vh; display: flex; align-items: center; justify-content: center'>
       <div id='adlib-intake-panel' style='display: flex; flex-direction: column'>
         <div id='adlib-editor-panel' style='display: flex; flex-direction: column; justify-content: space-between'>
-          <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="background-color:red;">Test</div>
           <div id='adlib-intake'>Default Text</div>
           
           <div style='display: flex;'>
-            <span id="drag1" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> Person</span>
-            <span id="drag2" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> noun1</span>
-            <span id="drag3" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> noun2</span>
-            <span id="drag4" class='text-decorator' draggable="true" ondragstart="drag(event)" style='vertical-align: super'> adject</span>
+            <span id="drag1" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> Person</span></span>
+            <span id="drag2" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun1</span></span>
+            <span id="drag3" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> noun2</span></span>
+            <span id="drag4" class='text-decorator' draggable="true" ondragstart="drag(event)"><span style='position: relative; top:-10px'> adject</span></span>
           </div>
         </div>
         <div id='adlib-buttons-panel' style='display: flex; align-items: flex-end; justify-content: flex-end'>

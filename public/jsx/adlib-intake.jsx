@@ -1,7 +1,19 @@
 var AdlibGhostinput = React.createClass({
 	getInitialState: function(){
+		var initial_text = '<span ondrop="drop(event)" ondragover="allowDrop(event)">John </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">watched </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">as </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">the </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">quick, </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">brown </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">fox </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">jumped </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">over </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">the </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">lazy </span>' +
+		'<span ondrop="drop(event)" ondragover="allowDrop(event)">dog. </span>';
 		return {
-			ghostinput: '<span ondrop="drop(event)" ondragover="allowDrop(event)">John </span> watched as the quick, brown fox jumped over the lazy dog'
+			ghostinput: initial_text
 		}
 	},
 	render: function (){
