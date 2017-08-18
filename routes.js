@@ -14,7 +14,7 @@ const routes = {
 	},
 	createOne: function(req, res, next){
     //curl 'http://localhost:3000/createOne' -d '{"adjective":"cool", "noun1": "bottle", "noun2": "blanket", "person_you_know": "Justin"}' -H "Content-Type: application/json"
-		var adlib_id = data.adlibs[data.adlibs.length-1].id+1;
+    var adlib_id = data.adlibs[data.adlibs.length-1].id+1;
     createAdlib(data, req.body, function(err, adlib){
       var record = {id: adlib_id, string: adlib};
       data.adlibs.push(record);

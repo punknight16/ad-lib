@@ -45,6 +45,7 @@
         width: 280px;
       }
       .submit-button {
+        border: none;
         padding: 5px 4px; 
         background: #63CA43;
         cursor: pointer;
@@ -92,6 +93,11 @@
           ev.target.prepend(document.getElementById(data));
           document.getElementById(data).className = 'text-decorator';
       }
+      function getData(id){
+        var person_you_know = document.getElementById(id).parentNode.childNodes[1].data;
+        alert(person_you_know);
+        return person_you_know;
+      }
     </script>
   </head>
   <body>
@@ -108,13 +114,20 @@
           </div>
         </div>
         <div id='adlib-buttons-panel' style='display: flex; align-items: flex-end; justify-content: flex-end'>
-          <div class='submit-button'>Submit</div>
+          <div id='submit'>Default Text</div>
+          <div class='submit-button' onclick='getData("drag1")'>Test</div>
+          <form action='/createOne' method='POST'>
+            <input type="hidden" value="getData()" name="person_you_know" />
+            <input type="hidden" value="fox" name="noun1" />
+            <input type="hidden" value="dog" name="noun2" />
+            <input type="hidden" value="lazy" name="adjective" />
+            <input type='submit' class='submit-button' value='Submit' />
+          </form>
           <div class='clear-button'>Clear</div>
         </div>
       </div>
     </div>
-
-    
     <script src="./jsx/adlib-intake.jsx" type="text/babel"></script>
+    <script src="./jsx/adlib-submit.jsx" type="text/babel"></script>
   </body>
 </html>

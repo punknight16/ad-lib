@@ -6,6 +6,7 @@ var app = express();
 
 app
   .use(bodyParser.json())
+  .use(bodyParser.urlencoded({ extended: false }))
   //.get('/', routes.entry)
   .get('/viewOne/:id', routes.viewOne)
   .get('/viewAll', routes.viewAll)
