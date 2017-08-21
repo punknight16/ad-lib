@@ -18,6 +18,18 @@
         height: 130px;
         width: 180px;
       }
+      .adlib-text {
+      	margin: 0 10px;
+      	color: #343434;
+        font-size: 14px; 
+        font-family: 'courier';
+        line-height: 20px;
+      }
+      .title {
+      	color: #343434;
+        font-size: 14px; 
+        font-family: 'verdana';
+      }
       .headings {
       	margin: 10px 10px;
         height: 38px;
@@ -31,30 +43,31 @@
 	</head>
 	  <body>
     <div id='main' style='height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column'>
-    	<div id='demo'>Default</div>
+    	<div id='title' class='title'>A quick story about John, a fox, and a lazy dog...</div>
     	<div id='storyboard-panel' style='display: flex; flex-direction: column'>
     		<div style='display: flex;'>
     			<p class='headings'>Instigating Action</p>
     			<p class='headings'>Character Conflict</p>
-    			<p class='headings'>Character Resolution</p>
+    			<p class='headings'>Plot <br /> Resolution</p>
     		</div>
     		<div style='display: flex'>
-    			<div class='adlib-editor-panels'></div>
-    			<div class='adlib-editor-panels'></div>
-    			<div class='adlib-editor-panels'></div>
+    			<div class='adlib-editor-panels' style='display: flex; align-items: center'><div id='panel1' class='adlib-text'>Default text for the instigating action.</div></div>
+    			<div class='adlib-editor-panels' style='display: flex; align-items: center'><div id='panel2' class='adlib-text'>Default text for the character conflict.</div></div>
+    			<div class='adlib-editor-panels' style='display: flex; align-items: center'><div id='panel3' class='adlib-text'>Default text for the plot resolution.</div></div>
     		<div>
     	</div>
-    	
     </div>
 		
 		<script>
 			var request = new XMLHttpRequest();
 			request.onreadystatechange = function() {
   		  if (this.readyState == 4 && this.status == 200) {
-  		    document.getElementById("demo").innerHTML = JSON.parse(this.responseText)[0].string
+  		    document.getElementById("panel1").innerHTML = JSON.parse(this.responseText)[0].string
+  		    document.getElementById("panel2").innerHTML = JSON.parse(this.responseText)[1].string
+  		    document.getElementById("panel3").innerHTML = JSON.parse(this.responseText)[2].string
   		  }
   		};
-			request.open("get", "viewAll", true);
+			request.open("get", "viewOne/0", true);
 			request.send();
 		</script>
 	</body>

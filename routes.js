@@ -6,8 +6,14 @@ const routes = {
   	res.end('entry');
 	},
 	viewOne: function(req, res, next){
-    var adlib_arr_position = data.adlibs.findIndex(adlib => adlib.id==req.params.id);
-		res.json(data.adlibs[adlib_arr_position]);
+    //var adlib_arr_position = data.adlibs.findIndex(adlib => adlib.id==req.params.id);
+		//res.json(data.adlibs[adlib_arr_position]);
+    var test_data = [
+      {id: 0, string: 'John watched on as the quick, brown fox jumped over the lazy dog.'},
+      {id: 1, string: 'He couldn’t help but wonder at the brashness of the fox. Why did the dog ignore the fox?'},
+      {id: 2, string: 'For the rest of the afternoon, John played with the lazy dog.'}
+    ];
+    res.json(test_data);
 	},
 	viewAll: function(req, res, next){
     res.json(data.adlibs);
