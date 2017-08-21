@@ -18,7 +18,7 @@ const routes = {
     createAdlib(data, req.body, function(err, adlib){
       var record = {id: adlib_id, string: adlib};
       data.adlibs.push(record);
-      res.redirect('/viewAll');
+      res.redirect('/adlib-story.html');
     });
 	},
 	editOne: function(req, res, next){

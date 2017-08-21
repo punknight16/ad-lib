@@ -1,10 +1,12 @@
 var express = require('express');
+var logger = require('morgan');
 var bodyParser = require('body-parser');
 var serveStatic = require('serve-static');
 var routes = require('./routes');
 var app = express();
 
 app
+  .use(logger('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: false }))
   //.get('/', routes.entry)
