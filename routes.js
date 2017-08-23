@@ -68,7 +68,7 @@ const routes = {
         data.adlib_data.push(adlib_record);
         interpretAdlibRecord(template_data, adlib_record, function(err, adlib_story){
           //res.json(adlib_story);
-          res.redirect('/story/'+adlib_id);
+          res.redirect('/story/'+adlib_record.id);
         });
       });
     });
