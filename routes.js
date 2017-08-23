@@ -48,8 +48,8 @@ const routes = {
 	},
 	createOne: function(req, res, next){
     var template_string = req.body.template_string;
-    var indicator_positions = req.body.indicator_positions;
-    var indicator_values = req.body.indicator_values;
+    var indicator_positions = JSON.parse(req.body.indicator_positions);
+    var indicator_values = JSON.parse(req.body.indicator_values);
     var template_data = data.template_data;
     var adlib_data = data.adlib_data;
 

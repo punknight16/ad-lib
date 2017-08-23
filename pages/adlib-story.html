@@ -67,7 +67,7 @@
   		    document.getElementById("panel3").innerHTML = JSON.parse(this.responseText)[2].string
   		  }
   		};
-			request.open("get", "viewOne/0", true);
+			request.open("get", "viewOne/"+window.location.pathname.slice(7), true);
 			request.send();
 		</script>
 	</body>
