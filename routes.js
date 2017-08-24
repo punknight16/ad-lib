@@ -1,6 +1,7 @@
 var path = require('path');
-//var data = require('./data');
-
+var fs = require('fs');
+var data = require('./app_data.json');
+/*
 var data = {
   template_data: [
     {id: 0, template_string: " watched on as the quick, brown  jumped over the  .", indicator_positions: {noun1: 50, adjective: 49, noun2: 32, person_you_know: 0 }},
@@ -13,7 +14,7 @@ var data = {
     {id: 2, indicator_values: {person_you_know: 'Erin', noun1: 'mouse', adjective: 'travelling', noun2: 'thumbtack'}, template_ids: [1, 2, 0]}
   ]
 }
-
+*/
 createTemplateRecord = require('./interactors/create-template-record');
 createAdlibRecord = require('./interactors/create-adlib-record');
 interpretAdlibRecord = require('./interactors/interpret-adlib-record');
@@ -29,6 +30,7 @@ const routes = {
     res.sendFile(path.join(__dirname+'/pages/adlib-story.html'));
   },
 	viewOne: function(req, res, next){
+    
     var found_record = data.adlib_data.find(adlib => adlib.id==req.params.id);
 		interpretAdlibRecord(data.template_data, found_record, function(err, adlib_story){
       res.json(adlib_story);
@@ -68,7 +70,14 @@ const routes = {
         data.adlib_data.push(adlib_record);
         interpretAdlibRecord(template_data, adlib_record, function(err, adlib_story){
           //res.json(adlib_story);
-          res.redirect('/story/'+adlib_record.id);
+          
+          fs.writeFile( "app_data.json", JSON.stringify( data ), "utf8", function(err){
+            if(err) throw err;
+            console.log('saved');
+            res.redirect('/story/'+adlib_record.id);  
+          });
+
+          
         });
       });
     });
