@@ -9,7 +9,7 @@ app
   .use(logger('dev'))
   .use(bodyParser.json())
   .use(bodyParser.urlencoded({ extended: false }))
-  .get('/', routes.entry)
+  .get('/', routes.intake)
   .get('/intake', routes.intake)
   .get('/story/:id', routes.story)
   .get('/story/viewOne/:id', routes.viewOne)
